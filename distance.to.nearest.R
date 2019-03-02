@@ -3,8 +3,9 @@
 # transposon or gene to certain positions in a genome. I feed the positions of interests as query and the locations of the
 # transposons as subject, function will make, for each position of interest, a binary search to identify the nearest
 # position in the second vector (f example, positions of transposons or other features),
-# and calculate the distance between these 2 positions. I think it could be easily modified to return the actual 
-# nearest position/identity of the nearest member in the second vector.
+# and calculate the distance between these 2 positions. It actually returns a named vector, the names of such vector are
+# the names of the corresponding members of the second vector which were found to be the closest to each position, so 
+# the identity of it should be imediately available if named vectors were fed.
 
 to.nearest <- function(query, subject){
   

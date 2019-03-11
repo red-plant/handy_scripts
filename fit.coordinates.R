@@ -2,7 +2,9 @@
 #and changes the coordinates of the annotation according to the variants in the vcf. This is, indels in 
 #each chromosome will affect the annotations downstream (5' to 3'), a gene whose start is at chromosome
 #1, base 1000 will start at chromosome 1, base 999, if theres a 1bp deletion before it. This script therefore takes an
-#annotation regarding the reference strain, and returns it regarding the alternative strain.
+#annotation regarding the reference strain, and returns it regarding the alternative strain. An indel inside
+#a feature, will only modify the end position, and therefore this can rarely return negative widths: if there is a
+#deletion bigger thatn 3bp inside a start/end codon in a gtf file.
 
 #If you enable 'fitted.variants.only', it will return only it will return only the features in your annotation that
 #overlap a variant, will change the coordinates to include only the variant, and will adapt them regarding to be

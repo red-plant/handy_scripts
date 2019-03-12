@@ -40,7 +40,6 @@ fit.coordinates <- function(feature.coordinates.gff, variants.vcf, fitted.varian
   chromosomes.gff <- seq(1, length(chromosomes.alias.gff)) 
   names(chromosomes.gff) <- chromosomes.alias.gff
   gff[,chromosome:=chromosomes.gff[chromosome]]
-  setorder(gff, chromosome, start,end)
   
   if(! fitted.variants.only){
     

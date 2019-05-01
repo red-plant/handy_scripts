@@ -1,5 +1,5 @@
 #This script takes an annotation file (gff or gtf) and a variant file in variant annotation format (vcf),
-#and changes the coordinates of the annotation according to the variants in the vcf. This is, indels in 
+#and 'updates' the coordinates of the annotation according to the variants in the vcf. This is, indels in 
 #each chromosome will affect the annotations downstream (5' to 3'), a gene whose start is at chromosome
 #1, base 1000 will start at chromosome 1, base 999, if theres a 1bp deletion before it. This script therefore takes an
 #annotation regarding the reference strain, and returns it regarding the alternative strain. An indel inside

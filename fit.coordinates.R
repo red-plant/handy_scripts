@@ -4,9 +4,9 @@
 #1, base 1000 will start at chromosome 1, base 999, if theres a 1bp deletion before it. This script therefore takes an
 #annotation regarding the reference strain, and returns it regarding the alternative strain. An indel inside
 #a feature, will only modify the end position, and therefore this can rarely return negative widths: if there is a
-#deletion bigger thatn 3bp inside a start/end codon in a gtf file.
+#deletion bigger than 3bp inside a start/end codon in a gtf file.
 
-#If you enable 'fitted.variants.only', it will return only it will return only the features in your annotation that
+#If you enable 'fitted.variants.only', it will return only the features in your annotation that
 #overlap a variant, will change the coordinates to include only the variant, and will adapt them regarding to be
 #regarding the alternative. This is, if gene A starts is at chromosome A, from bp 100 to bp 500, has an indel of 1bp 
 #beefore it, and a SNP at base 200, the script will return that gene A starts at base 199 and ends at base 199: the 
@@ -24,7 +24,7 @@ fit.coordinates <- function(feature.coordinates.gff, variants.vcf, fitted.varian
   require(data.table)
   
   vcf <- copy(variants.vcf)
-  setnames(vcf, c("chromosome", "start", "ID", "ref", "alt", "qual", "fiter", "info", "format", "unk"))
+  setnames(vcf, c("chromosome", "start", "ID", "ref", "alt", "qual", "fiter", "info", "format", "call.data"))
   chromosomes.alias.vcf <- vcf[,levels(factor(chromosome))]
   chromosomes.vcf <- seq(1, length(chromosomes.alias.vcf)) 
   names(chromosomes.vcf) <- chromosomes.alias.vcf

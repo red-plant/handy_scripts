@@ -44,7 +44,7 @@ which.quantil <- function(values, quantile.sep=0.25,  return.quantile.no=T, roun
     }
     value.quantiles <- merge(value.quantiles, quantiles[,.(quantile.nth, quantile.rang)], by="quantile.nth", all.x = T)
     setorder(value.quantiles, value.id)
-    value.quantiles[,factor(quantile.rang, levels=quantiles[,quantile.rang])]
+    value.quantiles[,factor(quantile.rang, levels=unique(quantiles[,quantile.rang]))]
   }
   
 }

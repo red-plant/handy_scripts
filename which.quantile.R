@@ -39,8 +39,8 @@ which.quantil <- function(values, quantile.sep=0.25,  return.quantile.no=T, roun
   }else{
     quantiles[,"quantile.rang":=paste(round(start, round.to), "to", round(end, round.to))]
     if(more.than.less.than){
-      quantiles[quantile.nth==1, quantile.rang:=paste("<", round(end, round.to))]
-      quantiles[quantile.nth==max(quantile.nth), quantile.rang:=paste(">", round(start, round.to))]
+      quantiles[quantile.nth==1, quantile.rang:=paste("<=", round(end, round.to))]
+      quantiles[quantile.nth==max(quantile.nth), quantile.rang:=paste(">=", round(start, round.to))]
     }
     value.quantiles <- merge(value.quantiles, quantiles[,.(quantile.nth, quantile.rang)], by="quantile.nth", all.x = T)
     setorder(value.quantiles, value.id)

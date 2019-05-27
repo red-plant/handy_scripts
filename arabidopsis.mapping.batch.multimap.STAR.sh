@@ -24,7 +24,7 @@ while [ $counter -lt $fileNum ]; do
   fileBasename=`echo ${files[$counter]} | sed 's_\.fastq\.gz__' | sed 's_-[FR]__'`
 
   STARcommand='STAR --runThreadN 20 --genomeDir '$genomeDir' --alignIntronMax 900 --alignMatesGapMax 900 --readFilesCommand pigz -d -c --outSAMtype BAM Unsorted --twopassMode Basic  --readFilesIn '$currentFile
-  if echo ${files[$counter]} | grep '\-F'
+  if echo ${files[$counter]} | grep -q '\-F'
    then
     STARcommand=${STARcommand}' '$nextFile
     let counter=$counter+2

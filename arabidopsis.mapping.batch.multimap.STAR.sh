@@ -8,7 +8,6 @@
 
 #Run inside the directory with the fastq files
 #Expects the name format: sampleName-[FR].fastq.gz, if paired end, sampleName.fastq.gz if single
-#Change the grep for fastq and the sed for fastq and -[FR] to suit needs.
 
 genomePath='FULL GENOME PATH HERE'
 outPrefix='PATH TO FOLDER TO COUNTAIN STAR.quant FOLDER here'

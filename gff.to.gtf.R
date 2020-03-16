@@ -1,4 +1,6 @@
-#only tested for araport11, with some editing it should work for any annotation. requires data.table package
+#only tested for araport11, with some editing for how the 9 column is formated it should work for any annotation.
+#requires data.table package. This script will NOT check for correct formating in the input other than the number of columns,
+#so be sure to feed a correct gff
 gff.to.gtf <- function(gff, write.to.file=F, file.path=NULL, gene.tag="ID=", transcript.tag="Parent="){
   require(data.table)
   gff <- data.table(gff)

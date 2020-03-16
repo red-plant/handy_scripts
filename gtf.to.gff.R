@@ -16,8 +16,9 @@ gff.to.gtf <- function(gff, write.to.file=F, file.path=NULL, gene.tag="ID=", tra
     if(write.to.file){
     write.table(gtf, file.path, row.names = F, col.names = F, sep='\t', qmethod = "escape", quote = F)  
     }else{
-      print("hope you know how to write that to a table without messing it")
-      return(gtf)
+      print("If you want to write the gtf to a file be sure to use write.table with row.names and col.names=F, sep='\t',
+              qmethod='escape', and quote=F")
+      gtf
     }
   
 }

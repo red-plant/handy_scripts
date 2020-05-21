@@ -1,4 +1,10 @@
 #!/usr/bin/ruby
+
+#This script takes a colour-space fasta file and a Phred scaled quality file, and converts them to a single fastq in colour
+# space but with Phred33 scaled quality. 
+
+#This was only possible thanks to Cary Swoveland from SO, because he is the best at ruby and I am a noob. Thanks Cary <3.
+
 csFaFile = File.open(ARGV[0])
 qualFile = File.open(ARGV[1])
 csFqFile = File.open(ARGV[2], "w")

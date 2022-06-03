@@ -50,6 +50,7 @@ fit.coordinates <- function(feature.coordinates.gff, variants.vcf, fitted.varian
       offset <- indels[i, offset]
       start.selector <- starts[[chr]]>var.start
       end.selector <- ends[[chr]]>var.start
+      indels[chromosome==chr & start>var.start, start:=start+indel.size]
       starts[[chr]][start.selector] <- starts[[chr]][start.selector]+offset
       ends[[chr]][end.selector] <- ends[[chr]][end.selector]+offset
     }
@@ -72,13 +73,16 @@ fit.coordinates <- function(feature.coordinates.gff, variants.vcf, fitted.varian
       
       end.selector <- ends[[chr]]>var.start
       starts[[chr]][start.selector] <- starts[[chr]][start.selector]+offset
+      indels[chromosome==chr & start>var.start, start:=start+indel.size]
       vcf.starts[[chr]][vcf.start.selector] <- vcf.starts[[chr]][vcf.start.selector]+offset
       ends[[chr]][end.selector] <- ends[[chr]][end.selector]+offset
     }
     gff[,start:=unlist(starts)]
     gff[,end:=unlist(ends)]
+    gff <- gff[end>=start]
     vcf[,start:=unlist(vcf.starts)]
     vcf[,"end":=start+nchar(alt)-1]
+    
     vcf <- vcf[,.(chromosome, start, end)]
     setkey(gff, chromosome, start, end)
     setkey(vcf, chromosome, start, end)    

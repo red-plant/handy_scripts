@@ -1,4 +1,10 @@
 #!/usr/bin/ruby
+
+#This code takes 3 input arguments (3 fastq files) one with mate1, one with mate2 and one with an UMI.
+# And 2 output arguments: tagged mate 1 and tagged mate2 fastq files. This is for when you have them
+# in different fastq files and need to append the UMI to the read name in their mate 1 and mate 2 
+# files to use with standard de-duplication tools
+
 mateOneFq = File.open(ARGV[0])
 mateTwoFq = File.open(ARGV[1])
 umiFq = File.open(ARGV[2])
